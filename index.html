@@ -1,143 +1,341 @@
 <!DOCTYPE html>
-<html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-</style>
-<body class="w3-light-grey">
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexander Wong - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+    <style>
+        .enhanced-background {
+        position: relative;
+    }
 
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
+    .enhanced-background::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle, #000 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.03;
+        pointer-events: none;
+        z-index: 0;
+    }
 
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-third">
-    
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>Name</h2>
-          </div>
+    .dark .enhanced-background::before {
+        background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+        opacity: 0.025;
+    }
+
+    .content-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Progress bar styles */
+    .progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 1001; /* Higher than nav */
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #3b82f6;
+    width: 0%;
+    transition: width 0.4s ease-in-out;
+}
+}
+
+    /* Navigation item styles */
+    .nav-item {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px; /* This makes it fully rounded */
+    transition: all 0.2s ease;
+    position: relative; /* Add this */
+    display: inline-block; /* Add this */
+}
+
+    </style>
+
+
+</head>
+
+
+<body class="min-h-screen bg-white dark:bg-gray-900 dark:text-white transition-colors duration-200 enhanced-background">
+    <div class="content-wrapper">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar"></div>
         </div>
-        <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Designer</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>London, UK</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>ex@mail.com</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
-          <hr>
-
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-          <p>Adobe Photoshop</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
-          </div>
-          <p>Photography</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-              <div class="w3-center w3-text-white">80%</div>
+ 
+        <!-- Navigation -->
+        <nav class="sticky top-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-md dark:shadow-[0_4px_15px_rgba(0,0,0,0.7)] z-50 mx-auto rounded-full max-w-4xl">
+            <div class="flex justify-center items-center py-3 px-4">
+                <!-- Center navigation items -->
+                <div class="flex space-x-6">
+                    <a href="#home" class="nav-item hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Home</a>
+                    <a href="#profile" class="nav-item hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Professional Profile</a>
+                    <a href="#experience" class="nav-item hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Work Experience</a>
+                    <a href="#education" class="nav-item hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Education</a>
+                    <a href="#organizations" class="nav-item hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Organizations & Projects</a>
+                    <a href="#skills" class="nav-item hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Skills</a>
+                </div>
+                
+                <!-- Move theme toggle to the right edge -->
+                <div class="absolute right-4">
+                    <button 
+                        onclick="toggleTheme()" 
+                        class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                        title="Toggle theme"
+                    >
+                        <!-- Sun icon for dark mode -->
+                        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <!-- Moon icon for light mode -->
+                        <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
-          </div>
-          <p>Illustrator</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
-          </div>
-          <p>Media</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
-          </div>
-          <br>
-
-          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
-          <p>English</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
-          </div>
-          <p>Spanish</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>
-          </div>
-          <p>German</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
-          </div>
-          <br>
+        </nav>
+ 
+        <!-- Main Content -->
+        <div class="max-w-6xl mx-auto px-4 py-8 space-y-16">
+            <!-- Header Section -->
+            <header id="home" class="text-center py-12">
+                <h1 class="text-4xl font-bold dark:text-white">Alexander Wong</h1>
+                <p class="text-xl mt-2 dark:text-gray-300">Mechanical Engineering Student at the University of Connecticut</p>
+                <div class="mt-6 flex justify-center space-x-4">
+                    <!-- Email button with popup -->
+                    <div class="relative">
+                        <button 
+                            onclick="toggleEmailPopup()" 
+                            class="px-6 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded hover:bg-blue-700 dark:hover:bg-blue-600">
+                            Send Email
+                        </button>
+                        <div 
+                            id="emailPopup" 
+                            class="hidden absolute left-1/2 transform -translate-x-1/2 mt-2 p-3 bg-white dark:bg-gray-800 rounded shadow-lg border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 text-sm whitespace-nowrap"
+                            style="z-index: 1000;">
+                            alw23027@uconn.edu
+                        </div>
+                    </div>
+ 
+                    <!-- Resume button -->
+                    <a 
+                        href="Resume2.23.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer" 
+                        class="px-6 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded hover:bg-blue-700 dark:hover:bg-blue-600">
+                        Resume
+                    </a>
+                </div>
+            </header>
+ 
+            <!-- Profile Section -->
+            <section id="profile" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <img
+                    src="1.jpg"
+                    alt="Profile"
+                    class="rounded-full mx-auto w-48 h-48"
+                />
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 dark:text-white">Professional Profile</h2>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        I am a first-year mechanical engineering student at the University of
+                        Connecticut with an interest in automotive and aerospace applications. I
+                        am currently a member of the Formula Society of Automotive Engineers
+                        (Formula SAE) team, working on improving the aerodynamics of our
+                        competition vehicle.
+                    </p>
+                    <div class="mt-4 flex items-center text-gray-500 dark:text-gray-400">
+                        <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Based in Unionville, CT, USA
+                    </div>
+                </div>
+            </section>
+ 
+            <!-- Experience Section -->
+            <section id="experience" class="py-8">
+                <h2 class="text-2xl font-bold mb-8 dark:text-white">Work Experience</h2>
+                <div class="space-y-8">
+                    <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4">
+                        <h3 class="text-xl font-semibold dark:text-white">Lifeguard</h3>
+                        <div class="flex items-center text-gray-500 dark:text-gray-400 mt-1">
+                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Farmington, CT, USA
+                        </div>
+                        <ul class="mt-4 space-y-2 list-disc list-inside text-gray-600 dark:text-gray-300">
+                            <li>Utilized problem-solving skills to coordinate efficient responses during emergencies</li>
+                            <li>Worked directly with patrons to assist with any issues or inquiries</li>
+                            <li>Applied critical thinking skills to make quick decisions</li>
+                            <li>Communicated effectively with both team members and patrons</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+ 
+            <!-- Education Section -->
+            <section id="education" class="py-8">
+                <h2 class="text-2xl font-bold mb-8 dark:text-white">Education</h2>
+                <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4">
+                    <h3 class="text-xl font-semibold dark:text-white">University of Connecticut</h3>
+                    <div class="flex items-center text-gray-500 dark:text-gray-400 mt-1">
+                        <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Storrs, CT, USA
+                    </div>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">2024-2028 (Projected)</p>
+                    <div class="mt-4">
+                        <h4 class="font-semibold text-gray-800 dark:text-gray-200">Relevant courses:</h4>
+                        <p class="mt-2 text-gray-600 dark:text-gray-300">
+                            Calculus I & II, AP Physics C, Engineering Design/Development, Principles of Engineering, 
+                            Digital Electronics, Automotive Technology, General Chemistry, Professional Communications, 
+                            AP Computer Science A
+                        </p>
+                    </div>
+                </div>
+            </section>
+ 
+            <!-- Organizations & Projects Section -->
+            <section id="organizations" class="py-8">
+                <h2 class="text-2xl font-bold mb-8 dark:text-white">Organizations & Projects</h2>
+                
+                <!-- Formula SAE Entry -->
+                <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4 mb-8">
+                    <h3 class="text-xl font-semibold dark:text-white">Formula SAE</h3>
+                    <p class="text-gray-500 dark:text-gray-400">University of Connecticut, 2024-present</p>
+                    <div class="mt-2 text-gray-600 dark:text-gray-300">
+                        <p>Member of the Formula SAE team, contributing to the design and development of high-performance vehicles for international collegiate competitions</p>
+                        <p class="mt-2">Working on vehicle aerodynamics</p>
+                    </div>
+                </div>
+ 
+                <!-- Holonomic Swerve Drive Robot Entry -->
+                <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4">
+                    <h3 class="text-xl font-semibold dark:text-white">Holonomic Swerve Drive Robot</h3>
+                    <p class="text-gray-500 dark:text-gray-400">Farmington High School, CT, 2023-2024</p>
+                    <div class="mt-2 text-gray-600 dark:text-gray-300">
+                        <p>Worked as part of a team to design and construct a swerve drive robot capable of manual navigation and obstacle detection facilitated through lidar, cameras, and Apriltag technology</p>
+                        <p class="mt-2">Received funding from the Toshiba corporation and Ensign-Bickford Aerospace & Defense</p>
+                    </div>
+                </div>
+            </section>
+ 
+            <!-- Skills Section -->
+            <section id="skills" class="py-8">
+                <h2 class="text-2xl font-bold mb-8 dark:text-white">Skills</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4">
+                        <h3 class="text-xl font-semibold mb-4 dark:text-white">Technical Skills</h3>
+                        <ul class="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-300">
+                            <li>CAD Software (SolidWorks)</li>
+                            <li>MATLAB</li>
+                            <li>Programming (Python, Java, HTML)</li>
+                            <li>3D Printing</li>
+                            <li>Microsoft Office</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4">
+                        <h3 class="text-xl font-semibold mb-4 dark:text-white">Soft Skills</h3>
+                        <ul class="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-300">
+                            <li>Problem Solving</li>
+                            <li>Team Collaboration</li>
+                            <li>Communication</li>
+                            <li>Leadership</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
         </div>
-      </div><br>
-
-    <!-- End Left Column -->
     </div>
-
-    <!-- Right Column -->
-    <div class="w3-twothird">
+ 
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+ 
+        function toggleEmailPopup() {
+            const popup = document.getElementById('emailPopup');
+            popup.classList.toggle('hidden');
+            
+            if (!popup.classList.contains('hidden')) {
+                setTimeout(() => {
+                    popup.classList.add('hidden');
+                }, 5000);
+            }
+        }
+ 
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+ 
+        function highlightNav() {
+    const sections = document.querySelectorAll('section');
+    const homeSection = document.getElementById('home');
+    const navLinks = document.querySelectorAll('nav a');
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
     
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Front End Developer / w3schools.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Web Developer / something.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
-          <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
-        </div>
-      </div>
-
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>W3Schools.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Forever</h6>
-          <p>Web Development! All I need to know in one place</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>London Business School</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2013 - 2015</h6>
-          <p>Master Degree</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>School of Coding</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2010 - 2013</h6>
-          <p>Bachelor Degree</p><br>
-        </div>
-      </div>
-
-    <!-- End Right Column -->
-    </div>
+    let current = '';
     
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
+    // Check if we're at the top of the page
+    if (window.scrollY < homeSection.offsetTop + 100) {
+        current = 'home';
+    } 
+    // Check if we're at the bottom of the page
+    else if ((window.innerHeight + window.scrollY) >= documentHeight - 50) {
+        current = 'skills';
+    }
+    // Check other sections
+    else {
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+    }
 
-<footer class="w3-container w3-teal w3-center w3-margin-top">
-  <p>Find me on social media.</p>
-  <i class="fa fa-facebook-official w3-hover-opacity"></i>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <i class="fa fa-twitter w3-hover-opacity"></i>
-  <i class="fa fa-linkedin w3-hover-opacity"></i>
-</footer>
+    navLinks.forEach(link => {
+        link.classList.remove('text-blue-600', 'dark:text-blue-400');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('text-blue-600', 'dark:text-blue-400');
+        }
+    });
+}
 
-</body>
+// Add event listeners
+window.addEventListener('scroll', highlightNav);
+window.addEventListener('load', highlightNav); // Check on initial load
+window.addEventListener('resize', highlightNav); // Check on window resize
+    </script>
+ </body>
 </html>
