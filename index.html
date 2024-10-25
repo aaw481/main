@@ -56,7 +56,7 @@
     height: 100%;
     background-color: #3b82f6;
     width: 0%;
-    transition: width 0.4s ease-in-out;
+    transition: width 0.1s ease;
 }
 }
 
@@ -75,15 +75,15 @@
 </head>
 
 
-<body class="min-h-screen bg-white dark:bg-gray-900 dark:text-white transition-colors duration-200 enhanced-background">
+<body class="min-h-screen bg-slate-100 dark:bg-slate-900 dark:text-white transition-colors duration-200 enhanced-background">
     <div class="content-wrapper">
         <!-- Progress Bar -->
         <div class="progress-container">
-            <div id="progressBar" class="progress-bar"></div>
+            <div id="progressBar" class="h-full bg-blue-600 dark:bg-blue-500" style="width: 0%"></div>
         </div>
  
         <!-- Navigation -->
-        <nav class="sticky top-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-md dark:shadow-[0_4px_15px_rgba(0,0,0,0.7)] z-50 mx-auto rounded-full max-w-4xl">
+        <nav class="sticky top-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-md dark:shadow-[0_4px_15px_rgba(0,0,0,0.7)] z-50 mx-auto rounded-full max-w-4xl">
             <div class="flex justify-center items-center py-3 px-4">
                 <!-- Center navigation items -->
                 <div class="flex space-x-6">
@@ -99,7 +99,7 @@
                 <div class="absolute right-4">
                     <button 
                         onclick="toggleTheme()" 
-                        class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                        class="p-2 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
                         title="Toggle theme"
                     >
                         <!-- Sun icon for dark mode -->
@@ -116,47 +116,17 @@
         </nav>
  
         <!-- Main Content -->
-        <div class="max-w-6xl mx-auto px-4 py-8 space-y-16">
-            <!-- Header Section -->
-            <header id="home" class="text-center py-12">
-                <h1 class="text-4xl font-bold dark:text-white">Alexander Wong</h1>
-                <p class="text-xl mt-2 dark:text-gray-300">Mechanical Engineering Student at the University of Connecticut</p>
-                <div class="mt-6 flex justify-center space-x-4">
-                    <!-- Email button with popup -->
-                    <div class="relative">
-                        <button 
-                            onclick="toggleEmailPopup()" 
-                            class="px-6 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded hover:bg-blue-700 dark:hover:bg-blue-600">
-                            Send Email
-                        </button>
-                        <div 
-                            id="emailPopup" 
-                            class="hidden absolute left-1/2 transform -translate-x-1/2 mt-2 p-3 bg-white dark:bg-gray-800 rounded shadow-lg border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 text-sm whitespace-nowrap"
-                            style="z-index: 1000;">
-                            alw23027@uconn.edu
-                        </div>
-                    </div>
- 
-                    <!-- Resume button -->
-                    <a 
-                        href="Resume2.23.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer" 
-                        class="px-6 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded hover:bg-blue-700 dark:hover:bg-blue-600">
-                        Resume
-                    </a>
-                </div>
-            </header>
- 
+        <div class="max-w-6xl mx-auto px-4 py-8 space-y-8">
+            
             <!-- Profile Section -->
-            <section id="profile" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <section id="profile" class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8">
                 <img
                     src="1.jpg"
                     alt="Profile"
                     class="rounded-full mx-auto w-48 h-48"
                 />
                 <div>
-                    <h2 class="text-2xl font-bold mb-4 dark:text-white">Professional Profile</h2>
+                    <h2 class="text-2xl font-bold mb-4 dark:text-white">Alexander Wong</h2>
                     <p class="text-gray-600 dark:text-gray-300">
                         I am a first-year mechanical engineering student at the University of
                         Connecticut with an interest in automotive and aerospace applications. I
@@ -170,15 +140,46 @@
                             <circle cx="12" cy="10" r="3"></circle>
                         </svg>
                         Based in Unionville, CT, USA
+
                     </div>
                 </div>
+
+                <div class="text-center py-12">
+                    <div class="mt-6 flex justify-center space-x-4">
+                        <!-- Email button with popup -->
+                        <div class="relative">
+                            <button 
+                                onclick="toggleEmailPopup()" 
+                                class="px-6 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded hover:bg-blue-700 dark:hover:bg-blue-600">
+                                Send Email
+                            </button>
+                            <div 
+                                id="emailPopup" 
+                                class="hidden absolute left-1/2 transform -translate-x-1/2 mt-2 p-3 bg-white dark:bg-slate-900 rounded shadow-xl border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 text-sm whitespace-nowrap"
+                                style="z-index: 1000;">
+                                alw23027@uconn.edu
+                            </div>
+                        </div>
+            
+                        <!-- Resume button -->
+                        <a 
+                            href="Resume2.23.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer" 
+                            class="px-6 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded hover:bg-blue-700 dark:hover:bg-blue-600">
+                            Resume
+                        </a>
+                    </div>
+                </div>
+
             </section>
- 
+
+            
             <!-- Experience Section -->
-            <section id="experience" class="py-8">
+            <section id="experience" class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8">
                 <h2 class="text-2xl font-bold mb-8 dark:text-white">Work Experience</h2>
                 <div class="space-y-8">
-                    <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4">
+                    <div class=" ">
                         <h3 class="text-xl font-semibold dark:text-white">Lifeguard</h3>
                         <div class="flex items-center text-gray-500 dark:text-gray-400 mt-1">
                             <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -198,9 +199,9 @@
             </section>
  
             <!-- Education Section -->
-            <section id="education" class="py-8">
+            <section id="education" class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8">
                 <h2 class="text-2xl font-bold mb-8 dark:text-white">Education</h2>
-                <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4">
+                <div class=" ">
                     <h3 class="text-xl font-semibold dark:text-white">University of Connecticut</h3>
                     <div class="flex items-center text-gray-500 dark:text-gray-400 mt-1">
                         <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -222,11 +223,11 @@
             </section>
  
             <!-- Organizations & Projects Section -->
-            <section id="organizations" class="py-8">
+            <section id="organizations" class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8">
                 <h2 class="text-2xl font-bold mb-8 dark:text-white">Organizations & Projects</h2>
                 
                 <!-- Formula SAE Entry -->
-                <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4 mb-8">
+                <div class="  mb-8">
                     <h3 class="text-xl font-semibold dark:text-white">Formula SAE</h3>
                     <p class="text-gray-500 dark:text-gray-400">University of Connecticut, 2024-present</p>
                     <div class="mt-2 text-gray-600 dark:text-gray-300">
@@ -236,7 +237,7 @@
                 </div>
  
                 <!-- Holonomic Swerve Drive Robot Entry -->
-                <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4">
+                <div class=" ">
                     <h3 class="text-xl font-semibold dark:text-white">Holonomic Swerve Drive Robot</h3>
                     <p class="text-gray-500 dark:text-gray-400">Farmington High School, CT, 2023-2024</p>
                     <div class="mt-2 text-gray-600 dark:text-gray-300">
@@ -247,10 +248,10 @@
             </section>
  
             <!-- Skills Section -->
-            <section id="skills" class="py-8">
+            <section id="skills" class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8">
                 <h2 class="text-2xl font-bold mb-8 dark:text-white">Skills</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4">
+                    <div class=" ">
                         <h3 class="text-xl font-semibold mb-4 dark:text-white">Technical Skills</h3>
                         <ul class="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-300">
                             <li>CAD Software (SolidWorks)</li>
@@ -260,7 +261,7 @@
                             <li>Microsoft Office</li>
                         </ul>
                     </div>
-                    <div class="border-l-4 border-blue-600 dark:border-blue-500 pl-4">
+                    <div class=" ">
                         <h3 class="text-xl font-semibold mb-4 dark:text-white">Soft Skills</h3>
                         <ul class="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-300">
                             <li>Problem Solving</li>
